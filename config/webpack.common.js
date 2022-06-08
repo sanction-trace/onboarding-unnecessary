@@ -98,7 +98,6 @@ module.exports = {
   },
   plugins: [
     new Dotenv(), // Load .env file
-    new MiniCssExtractPlugin(), // extract css into separate files
     new HtmlWebpackPlugin({
       // Create HTML file that includes references to bundled CSS and JS.
       filename: 'index.html',
