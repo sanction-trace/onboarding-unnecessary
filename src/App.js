@@ -3,7 +3,8 @@ import React from 'react';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Test from './containers/Test';
+import Test from './components/Test';
+
 class App extends React.Component {
   render() {
     return (

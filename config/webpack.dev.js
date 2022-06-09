@@ -1,6 +1,7 @@
-const BundleAnalyzerPlugin =
-  require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin =
+//   require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PATHS = require('./paths');
 
 module.exports = {
   mode: 'development',
@@ -8,7 +9,7 @@ module.exports = {
   devServer: {
     hot: true,
     static: {
-      directory: '/dist',
+      directory: PATHS.PUBLIC,
     },
     client: { overlay: false },
     open: true,
@@ -22,20 +23,13 @@ module.exports = {
   },
   performance: {
     hints: false,
-    assetFilter(assetFilename) {
-      const excludedFiles = ['hot.bundle.js'];
-      if (excludedFiles.includes(assetFilename)) {
-        return false;
-      }
-      return !/\.map$/.test(assetFilename); // skip source maps
-    },
   },
   plugins: [
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'server',
-      analyzerPort: 8888,
-      openAnalyzer: false,
-    }),
+    // new BundleAnalyzerPlugin({
+    //   analyzerMode: 'server',
+    //   analyzerPort: 8888,
+    //   openAnalyzer: false,
+    // }),
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].css',
     }),

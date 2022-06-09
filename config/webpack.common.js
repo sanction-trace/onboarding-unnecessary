@@ -1,20 +1,18 @@
-const path = require('path');
 const Dotenv = require('dotenv-webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const PATHS = {
-  dist: path.resolve(__dirname, '../dist'),
-  src: path.join(__dirname, 'src'),
-};
+const PATHS = require('./paths');
 
 module.exports = {
   entry: {
-    app: './src/index.js',
+    app: PATHS.ENTRY,
   },
   output: {
-    path: PATHS.dist,
+    path: PATHS.DIST,
     clean: true,
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.jsx', '.js'],
   },
   performance: {
     maxEntrypointSize: 1000000, // 1MB
@@ -29,7 +27,7 @@ module.exports = {
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
+          name: 'vendor',
           chunks: 'all',
         },
       },
@@ -42,7 +40,15 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
-          configFile: path.resolve(__dirname, 'babel.config.js'),
+          configFile: PATHS.CONFIGS.BABEL,
+        },
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        loader: 'ts-loader',
+        options: {
+          configFile: PATHS.CONFIGS.TYPESCIPT,
         },
       },
       {
