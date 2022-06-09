@@ -9,9 +9,9 @@
   "license": "ISC",
   "scripts": {
     "clean": "rm -rf dist",
-    "start": "webpack serve --hot --mode development",
-    "build": "webpack --mode production",
-    "build-dev": "webpack --mode development"
+    "start": "webpack serve --hot --mode development --config config/webpack/webpack.config.js",
+    "build": "webpack --mode production --config config/webpack/webpack.config.js",
+    "build-dev": "webpack --mode development --config config/webpack/webpack.config.js"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.5",
