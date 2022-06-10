@@ -1,5 +1,7 @@
+const autoprefixer = require('autoprefixer');
+
 module.exports = {
   plugins: [
-    require('autoprefixer') // add vendor prefixes to css
-  ]
+    autoprefixer, // add vendor prefixes to css
+  ],
 };

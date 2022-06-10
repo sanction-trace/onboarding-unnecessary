@@ -8,7 +8,11 @@
     "allowJs": true,
     "moduleResolution": "node",
     "strict": true,
-    "allowSyntheticDefaultImports": true,  // allow default imports for modules without default export
-    "rootDirs": ["src"]
+    "allowSyntheticDefaultImports": true, // allow default imports for modules without default export
+    "rootDirs": ["src"],
+    "baseUrl": "../",
+    "paths": {
+      "components": ["src/components/*"]
+    }
   }
 }

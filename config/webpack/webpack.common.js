@@ -1,4 +1,6 @@
+const path = require('path');
 const Dotenv = require('dotenv-webpack');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PATHS = require('../paths');
@@ -12,6 +14,7 @@ module.exports = {
     clean: true,
   },
   resolve: {
+    modules: [path.join(PATHS.SRC), 'node_modules'],
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
   },
   performance: {
@@ -23,7 +26,7 @@ module.exports = {
     runtimeChunk: 'single',
     splitChunks: {
       minSize: 10000, // 10KB
-      maxSize: 250000, // 512KB
+      maxSize: 250000, // 250KB
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
@@ -104,6 +107,10 @@ module.exports = {
   },
   plugins: [
     new Dotenv(), // Load .env file
+    new ESLintPlugin({
+      extensions: ['js', 'jsx', 'ts', 'tsx'],
+      exclude: ['node_modules'],
+    }), // Lint JS files
     new HtmlWebpackPlugin({
       // Create HTML file that includes references to bundled CSS and JS.
       filename: 'index.html',

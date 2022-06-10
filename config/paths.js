@@ -1,8 +1,6 @@
 const path = require('path');
 
-const getAbsolutePath = (value) => {
-  return path.join(__dirname, value);
-};
+const getAbsolutePath = (value) => path.join(__dirname, value);
 
 module.exports = {
   ENTRY: './src/index.js',
@@ -12,5 +10,5 @@ module.exports = {
   CONFIGS: {
     BABEL: getAbsolutePath('babel.config.js'),
     TYPESCIPT: getAbsolutePath('tsconfig.json'),
-  }
+  },
 };

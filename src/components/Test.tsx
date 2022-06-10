@@ -1,7 +1,17 @@
 import React from 'react';
 
-const Test: React.FC = () => {
-  return <input type="text" className="test" />;
+type CardProps = {
+  title: string;
+  paragraph: boolean;
 };
 
+function Test({ title, paragraph }: CardProps) {
+  return (
+    <aside>
+      <h2>{title}</h2>
+      <p>{paragraph}</p>
+      <input type='text' />
+    </aside>
+  );
+}
 export default Test;
