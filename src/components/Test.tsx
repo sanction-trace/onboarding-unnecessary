@@ -1,16 +1,14 @@
 import React from 'react';
 
-type CardProps = {
-  title: string;
-  paragraph: boolean;
+type TestProps = {
+  text: boolean;
 };
 
-function Test({ title, paragraph }: CardProps) {
+function Test({ text }: TestProps) {
   return (
     <aside>
-      <h2>{title}</h2>
-      <p>{paragraph}</p>
       <input type='text' />
+      {text}
     </aside>
   );
 }

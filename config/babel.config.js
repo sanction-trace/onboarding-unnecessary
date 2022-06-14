@@ -8,7 +8,7 @@ module.exports = function babel(api) {
       },
     ],
     '@babel/preset-react',
-    '@babel/preset-typescript',
+    // '@babel/preset-typescript',
   ];
 
   const plugins = [];

@@ -10,9 +10,9 @@ function App() {
     <>
       <h1>Hello Test</h1>
       <button type='button' className='btn btn-primary'>
+        <Test text='false' />
         This is a bootstrap
       </button>
-      <Test title='hello' paragraph='world' />
     </>
   );
 }

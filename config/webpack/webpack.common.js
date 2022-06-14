@@ -1,6 +1,7 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PATHS = require('../paths');
@@ -39,19 +40,19 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        loader: 'ts-loader',
+        options: {
+          configFile: PATHS.CONFIGS.TYPESCRIPT,
+        },
+      },
+      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
           configFile: PATHS.CONFIGS.BABEL,
-        },
-      },
-      {
-        test: /\.(ts|tsx)$/,
-        exclude: /node_modules/,
-        loader: 'ts-loader',
-        options: {
-          configFile: PATHS.CONFIGS.TYPESCIPT,
         },
       },
       {
@@ -108,9 +109,13 @@ module.exports = {
   plugins: [
     new Dotenv(), // Load .env file
     new ESLintPlugin({
-      extensions: ['js', 'jsx', 'ts', 'tsx'],
+      extensions: ['tsx', 'ts', 'jsx', 'js'],
       exclude: ['node_modules'],
+      overrideConfigFile: PATHS.CONFIGS.ESLINT,
     }), // Lint JS files
+    new StylelintPlugin({
+      configFile: PATHS.CONFIGS.STYLELINT,
+    }),
     new HtmlWebpackPlugin({
       // Create HTML file that includes references to bundled CSS and JS.
       filename: 'index.html',

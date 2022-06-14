@@ -1,3 +1,4 @@
+const { dirname } = require('path');
 const path = require('path');
 
 const getAbsolutePath = (value) => path.join(__dirname, value);
@@ -9,6 +10,8 @@ module.exports = {
   SRC: getAbsolutePath('../src'),
   CONFIGS: {
     BABEL: getAbsolutePath('babel.config.js'),
-    TYPESCIPT: getAbsolutePath('tsconfig.json'),
+    TYPESCRIPT: getAbsolutePath('tsconfig.json'),
+    STYLELINT: getAbsolutePath('.stylelintrc.json'),
+    ESLINT: getAbsolutePath('.eslintrc.js'),
   },
 };

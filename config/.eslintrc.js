@@ -3,16 +3,23 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb'],
-  // parser: '@typescript-eslint/parser',
+  extends: [
+    'airbnb',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+  ],
+  // ignorePatterns: ["babel.config.js"],
   parser: '@typescript-eslint/parser',
   parserOptions: {
+    tsconfigRootDir: __dirname,
+    project: ['./tsconfig.eslint.json'],
+    sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
       arrowFunctions: true,
     },
     ecmaVersion: 'latest',
-    sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
@@ -27,7 +34,7 @@ module.exports = {
     'import/resolver': {
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        moduleDirectory: ['src', 'node_modules'],
+        moduleDirectory: ['../src', 'node_modules'],
       },
     },
   },
