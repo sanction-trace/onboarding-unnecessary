@@ -3,10 +3,10 @@ import React from 'react';
 import styles from './styles.module.css';
 
 type TestProps = {
-  text: boolean;
+  text: number;
 };
 
-function Test({ text }: TestProps) {
+function Test({ text }: TestProps): JSX.Element {
   return (
     <aside className={styles.testCSSModules}>
       <input type='text' />
@@ -14,4 +14,5 @@ function Test({ text }: TestProps) {
     </aside>
   );
 }
+
 export default Test;
